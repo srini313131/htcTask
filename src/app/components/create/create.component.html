@@ -1,0 +1,48 @@
+
+<div class="card" >
+  <h1>Create</h1>
+  <div class="card-body">
+   <form [formGroup]="employeeForm" >
+
+    <div class="form-group"
+
+    >
+      <label for="name">User Name</label>
+      <input type="text" class="form-control" id="name" placeholder="Name" formControlName="name"
+      [ngClass]="{'required': employeeForm.get('name').errors}"
+      >
+    </div>
+    <div class="form-group">
+      <label for="salary">Salary</label>
+      <input type="text" class="form-control" id="salary" placeholder="Salary" formControlName="salary"
+      (keypress)="numbersOnly($event)"
+      >
+    </div>
+
+    <div class="form-group">
+      <label for="address">Address</label>
+
+      <textarea formControlName="address" class="form-control"></textarea>
+    </div>
+
+
+<label> Is Permanent Address</label>
+    <div class="custom-control custom-radio">
+      <input type="radio" id="ispermanentaddress" name="isPermanentAddress" class="custom-control-input" formControlName="isPermanentAddress" value='yes' (change)="radioChange()">
+      <label class="custom-control-label" for="ispermanentaddress">Yes</label>
+    </div>
+    <div class="custom-control custom-radio">
+      <input type="radio" id="customRadio2" name="isPermanentAddress" class="custom-control-input" formControlName="isPermanentAddress" value="no" (change)="radioChange()">
+      <label class="custom-control-label" for="customRadio2">No</label>
+    </div>
+
+    <div class="form-group" *ngIf="employeeForm.get('isPermanentAddress').value ==='no'">
+      <label for="alternateAddress">Alternate Address</label>
+
+      <textarea formControlName="alternateAddress" class="form-control"></textarea>
+    </div>
+   </form>
+    <button (click)="submit()" class="btn btn-primary" [disabled]="employeeForm.invalid">Create</button>
+  </div>
+
+  {{employeeForm.get('name').errors | json}}

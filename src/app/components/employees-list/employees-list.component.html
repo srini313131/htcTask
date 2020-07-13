@@ -1,0 +1,33 @@
+<div class="row">
+<div class="col-sm-6">
+  <h1>Employees List</h1>
+
+
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Salary</th>
+        <th>Address</th>
+        <th> Permanent Address</th>
+        <th>Alternate Address</th>
+      <th>modify</th>
+      </tr>
+    </thead>
+
+<tbody>
+  <tr *ngFor="let employee of employees; let i= index">
+    <td>{{employee.name}}</td>
+    <td>{{employee.salary}}</td>
+    <td>{{employee.address}}</td>
+    <td>{{employee.isPermanentAddress}}</td>
+    <td>{{employee.alternateAddress !== ''? employee.alternateAddress : '---------' }}</td>
+   <td> <button class="btn btn-warning" (click)="deleteEmployee(i)"> Delete</button></td>
+  </tr>
+</tbody>
+
+  </table>
+
+</div>
+
+</div>

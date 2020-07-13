@@ -123,6 +123,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "htcAngulartest"
+    }
+  },
+  "defaultProject": "htcAngulartest",
+  "cli": {
+    "analytics": false
+  }
 }
